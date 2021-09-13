@@ -1,51 +1,52 @@
 ﻿using System;
+using static donkethua.Hinhchunhat;
 
-namespace kethuatamgiac
+namespace donkethua
 {
-    class Tamgiac
+    class Hinhchunhat
     {
-        protected double a, b, c;
-        public Tamgiac(double a, double b, double c)
-        {
-            this.a = a;
-            this.b = b;
-            this.c = c;
+        public double d, r;
 
+        public Hinhchunhat(double d, double r)
+        {
+            this.d = d;
+            this.r = r;
         }
+
+        
         public double dientich()
-        {           
-            double p,s;
-            p = (a + b + c) / 2;
-            s = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-            return s;
-        }
-         class Tudien:Tamgiac
         {
-            private double h;
-            public Tudien(double a, double b, double c,double h) : base(a,b,c)
-            {
-                this.h = h;
-
-            }
-            public double Dientichtoanphan()
-            {
-                return dientich()* 4;
-
-            }
-            public double thetichtudien()
-            {
-                return (1 / 3) * Dientichtoanphan() * h;
-            }
+            return d * r;
         }
-        class Program
+         public class Hinhhop : Hinhchunhat
         {
-            static void Main(string[] args)
+            private double c;
+            public Hinhhop (double d,double r,double c) : base(d,r)
             {
-                Tudien x = new Tudien(8,7,9,8);
-                Console.WriteLine("dien tich tam giac\tdien tich toan phan\tthe tich:{0},{1},{2}",x.dientich(),x.Dientichtoanphan(),x.thetichtudien());
-                Console.ReadLine();
+                this.c = c;
 
             }
+            public double dientichtp()
+            {
+                return dientich()* c;
+            }
+
+
+        }
+            
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double d, r, c;
+            
+            d = double.Parse(Console.ReadLine());
+            r = double.Parse(Console.ReadLine());
+            c = double.Parse(Console.ReadLine());
+            Hinhhop x = new Hinhhop(d,r,c);
+            Console.WriteLine("dientichhinhtudienla:{0}", x.dientichtp());
+              Console.ReadLine();
         }
     }
 }
